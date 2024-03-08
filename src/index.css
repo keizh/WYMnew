@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffbb5c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 8px;
+}
+
+::-webkit-scrollbar:vertical {
+  width: 8px;
+}
+
+@media (max-width: 1024px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+select {
+  outline: none;
+  border-radius: 5px;
+  padding-inline: 5px;
+  padding-block: 10px;
+  width: 200px;
+  background-color: #666;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  select {
+    width: 80px;
+    font-size: 10px;
+  }
+}
+
+select option {
+  border-radius: 0;
+}
+
+.active-topnav {
+  background-color: black;
+}
+
+.animation {
+  animation-name: anima;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes anima {
+  0% {
+    color: white;
+  }
+  33% {
+    color: greenyellow;
+  }
+  66% {
+    color: orangered;
+  }
+  100% {
+    color: white;
+  }
+}
