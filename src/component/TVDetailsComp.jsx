@@ -252,8 +252,9 @@ function TVDetailsComp() {
       <Outlet />
     </div>
   ) : (
-    <div className="h-screen w-screen flex items-center justify-center bg-black font-black text-white text-xl sm:text-5xl">
+    <div className="h-screen w-screen flex flex-col items-center justify-center bg-black font-black text-white text-xl sm:text-5xl">
       <p className="animation">PLEASE WAIT , Loading ... </p>
+      <p className="text-base">API is Free,HenceForth SLOW</p>
     </div>
   );
 }

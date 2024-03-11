@@ -2,6 +2,7 @@
 import axios from "../../utils/axios";
 import { loadMovie } from "../reducers/MovieDetails";
 export { removeMovie } from "../reducers/MovieDetails";
+import { useNavigate } from "react-router-dom";
 
 const Asyncfetchmovie = (id) => async (dispatch, getState) => {
   try {

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "../utils/axios";
 import Loader from "./templates/Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
+import NotFound from "./NotFound";
 
 function People() {
   document.title = "WYM Actor's";
@@ -16,6 +17,7 @@ function People() {
   const [people, setPeople] = useState([]);
   const [hasMoreData, setHasMoreData] = useState(true);
   const [page, setPage] = useState(1);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const getPeopleData = async () => {
@@ -30,6 +32,10 @@ function People() {
       setPage((prev) => prev + 1);
     } catch (err) {
       console.log(err.message);
+      setError(true);
+      if (error == true) {
+        return <NotFound />;
+      }
     } finally {
       setloader(false);
     }

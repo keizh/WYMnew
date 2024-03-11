@@ -11,4 +11,4 @@ const instance = axios.create({
 export default instance;
 
 // CUSTOM HOOK AXIOS COMPLETE
-// Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
+// Authorization: `Bearer ${import.meta.env.VITE_TMDB_AUTHO}`,

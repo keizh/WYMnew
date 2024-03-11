@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "../utils/axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./templates/Loader";
+import NotFound from "./NotFound";
 
 function TVshow() {
   const [loader, setloader] = useState(true);
@@ -18,6 +19,7 @@ function TVshow() {
   ] = useState([]);
   const [hasMoreData, setHasMoreData] = useState(true);
   const [page, setPage] = useState(1);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const gettvshowData = async () => {
@@ -38,6 +40,10 @@ function TVshow() {
       setPage((prev) => prev + 1);
     } catch (err) {
       console.log(err.message);
+      setError(true);
+      if (error == true) {
+        return <NotFound />;
+      }
     } finally {
       setloader(false);
     }

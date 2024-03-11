@@ -6,7 +6,8 @@ import SideBarNav from "./templates/SideBarNav";
 import TopNav from "./templates/TopNav";
 import Header from "./templates/Header";
 import HorizontalCard from "./templates/HorizontalCard";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import NotFound from "./NotFound";
 
 function Home() {
   document.title = "WYM Home ";
@@ -14,11 +15,13 @@ function Home() {
   const [trending, setTrending] = useState(null);
   // TO DISPLAY IS LOADING STATE WHEN DATA IS YET TO BE RETRIEVED
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   /* BY DEFAULT WE ARE STORING THE TRENDING CATEGORY , WHEN WE UPDATE CATEGORY THROUGH THE DROPDOWN
   THE DATA IS REFETCHED */
   const [trendingCategory, setTrendingCategory] = useState("all");
 
   const [trendingCategoryData, setTrendingCategoryData] = useState(null);
+  const navigate = useNavigate();
 
   const getTrending = async function () {
     try {
@@ -40,6 +43,10 @@ function Home() {
       setTrendingCategoryData(data.data.results);
     } catch (error) {
       console.log(error.message);
+      setError(true);
+      if (error == true) {
+        return <NotFound />;
+      }
     } finally {
       setIsLoading(false);
     }

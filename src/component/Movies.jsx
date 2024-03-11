@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "../utils/axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./templates/Loader.jsx";
+import NotFound from "./NotFound.jsx";
 
 function Movies() {
   document.title = "WYM Movie";
@@ -22,6 +23,7 @@ function Movies() {
   ] = useState([]);
   const [hasMoreData, setHasMoreData] = useState(true);
   const [page, setPage] = useState(1);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const getmovieData = async () => {
@@ -41,6 +43,10 @@ function Movies() {
       setPage((prev) => prev + 1);
     } catch (err) {
       console.log(err.message);
+      setError(true);
+      if (error == true) {
+        return <NotFound />;
+      }
     } finally {
       setloader(false);
     }
