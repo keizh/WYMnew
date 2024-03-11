@@ -67,7 +67,7 @@ function TopNav({ width = "full", widthofinputandresultbelowBox = `50%` }) {
 
       {query && searchData && (
         <div
-          className={`absolute  top-[100%] max-h-[60vh] w-[80%] xl:w-[70%] bg-zinc-100  rounded overflow-y-scroll`}
+          className={`absolute z-50 top-[100%] max-h-[60vh] w-[80%] xl:w-[70%] bg-zinc-100  rounded overflow-y-scroll`}
         >
           {searchData &&
             searchData.map((item, index) => (
